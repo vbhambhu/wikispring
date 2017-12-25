@@ -14,6 +14,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column(unique=true)
+    private String slug;
+
     private String title;
 
     private String content;
@@ -21,6 +24,7 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private PostCategory postCategory;
+
 
     public long getId() {
         return id;
@@ -52,5 +56,13 @@ public class Post {
 
     public void setPostCategory(PostCategory postCategory) {
         this.postCategory = postCategory;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 }

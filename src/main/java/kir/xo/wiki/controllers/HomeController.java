@@ -28,7 +28,6 @@ public class HomeController {
 //        post.setTitle("Hello World");
 //        post.setContent("Something");
 //        post.setPostCategory(postCategory);
-//
 //        postRepository.save(post);
 
         for (PostCategory postCategory : postCategoryRepository.findAll()) {
