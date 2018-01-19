@@ -18,9 +18,7 @@ public class PostController {
 
     @RequestMapping(value = "/post/new", method = RequestMethod.GET)
     public String projectDashboard() {
-
         return "post/create";
-
     }
 
 

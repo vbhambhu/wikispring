@@ -25,7 +25,6 @@ public class Post {
     @JoinColumn(name = "category_id")
     private PostCategory postCategory;
 
-
     public long getId() {
         return id;
     }
