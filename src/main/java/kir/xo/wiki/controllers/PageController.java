@@ -1,8 +1,7 @@
 package kir.xo.wiki.controllers;
 
-import kir.xo.wiki.models.Post;
-import kir.xo.wiki.models.PostCategory;
-import kir.xo.wiki.repositories.PostRepository;
+import kir.xo.wiki.models.Page;
+import kir.xo.wiki.repositories.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,23 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class PostController {
+public class PageController {
 
     @Autowired
-    PostRepository postRepository;
+    PageRepository postRepository;
 
-    @RequestMapping(value = "/post/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/page/new", method = RequestMethod.GET)
     public String projectDashboard() {
-        return "post/create";
+        return "page/new";
     }
 
 
-    @RequestMapping(value = "/post/{slug}", method = RequestMethod.GET)
+    @RequestMapping(value = "/page/{slug}", method = RequestMethod.GET)
     public String showPost(
             Model model,
             @PathVariable(required = true) String slug) {
 
-        Post post = postRepository.findBySlug(slug);
+        Page post = postRepository.findBySlug(slug);
+
+
+        System.out.println(post.getCategory().getName());
 
         model.addAttribute("post", post);
 

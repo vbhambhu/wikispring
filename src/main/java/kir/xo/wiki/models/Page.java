@@ -2,17 +2,14 @@ package kir.xo.wiki.models;
 
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 @Entity
-@Table(name = "post")
-public class Post {
+@Table(name = "page")
+public class Page {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(unique=true)
     private String slug;
@@ -23,14 +20,23 @@ public class Post {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    private PostCategory postCategory;
+    private Category category;
 
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     public String getTitle() {
@@ -49,19 +55,11 @@ public class Post {
         this.content = content;
     }
 
-    public PostCategory getPostCategory() {
-        return postCategory;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setPostCategory(PostCategory postCategory) {
-        this.postCategory = postCategory;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

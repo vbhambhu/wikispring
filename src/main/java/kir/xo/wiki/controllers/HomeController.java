@@ -1,10 +1,7 @@
 package kir.xo.wiki.controllers;
 
 
-import kir.xo.wiki.models.Post;
-import kir.xo.wiki.models.PostCategory;
-import kir.xo.wiki.repositories.PostCategoryRepository;
-import kir.xo.wiki.repositories.PostRepository;
+import kir.xo.wiki.repositories.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,25 +11,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 
     @Autowired
-    PostRepository postRepository;
+    PageRepository postRepository;
 
-    @Autowired
-    PostCategoryRepository postCategoryRepository;
+
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String projectDashboard() {
 
-//        PostCategory postCategory = new PostCategory();
+//        Category postCategory = new Category();
 //        postCategory.setName("Categorty 1");
-//        Post post = new Post();
-//        post.setTitle("Hello World");
-//        post.setContent("Something");
-//        post.setPostCategory(postCategory);
-//        postRepository.save(post);
+//        Page page = new Page();
+//        page.setTitle("Hello World");
+//        page.setContent("Something");
+//        page.setCategory(postCategory);
+//        postRepository.save(page);
 
-        for (PostCategory postCategory : postCategoryRepository.findAll()) {
-            System.out.println(postCategory.getPosts());
-        }
+//        for (Category category : postCategoryRepository.findAll()) {
+//            System.out.println(category.getPosts());
+//        }
 
 
         return "home";

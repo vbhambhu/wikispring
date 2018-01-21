@@ -1,23 +1,17 @@
-
+alert(5);
 $( "#createPost" ).click(function() {
 
-    var title = $("#title").val();
+    var formdata = $('#pageForm').serialize();
 
-    var slug = slugify(title);
+    console.log(formdata);
 
-        $.post( "/api/post/create", { title: title, slug: slug })
-        .done(function( data ) {
-            window.location.replace("/post/"+slug+"&edit=true");
+
+        $.post( "/api/page/create", formdata)
+        .done(function( response ) {
+
+            if(response.status){
+               // window.location.replace("/page/"+response.message+"&edit=true");
+            }
+
         });
-
 });
-
-function slugify(text) {
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
-}
-
